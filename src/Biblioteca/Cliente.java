@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author jordan
+ * @author Rodrigo e Jordan
  */
 public class Cliente {
 
@@ -25,11 +25,11 @@ public class Cliente {
         try {
             Registry referenciaServicoNomes = LocateRegistry.getRegistry(9000);
             
-            interfaceServ = (InterfaceServ) referenciaServicoNomes.lookup("ServidorHelloWorld");
+            interfaceServ = (InterfaceServ) referenciaServicoNomes.lookup("Servidor_Biblioteca");
             
             CliImpl cliImpl = new CliImpl(interfaceServ);
             
-            cliImpl.chamarServidor();
+            cliImpl.consultarLivro(1);
             
         } catch (RemoteException | NotBoundException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);

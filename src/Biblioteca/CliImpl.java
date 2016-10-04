@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author jordan
+ * @author Rodrigo e Jordan
  */
 public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     
@@ -23,17 +23,17 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
         this.interfaceServ = interfaceServ;
     }
     
-    public void chamarServidor()
+    public void consultarLivro(int id)
     {
         try {
-            interfaceServ.chamar("Teste", this);
+            interfaceServ.consultarLivro("1", this);
         } catch (RemoteException ex) {
             System.err.println(ex.toString());
             Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void echo(String str) throws RemoteException{
+    public void exibir(String str) throws RemoteException{
         System.out.println(str);
     }
     
