@@ -26,15 +26,15 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     public void consultarLivro(int id)
     {
         try {
-            interfaceServ.consultarLivro("1", this);
+            interfaceServ.consultarLivro(1, this);
         } catch (RemoteException ex) {
             System.err.println(ex.toString());
             Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void exibir(String str) throws RemoteException{
-        System.out.println(str);
+    public void exibir(int livroId) throws RemoteException{
+        System.out.println(livroId);
     }
     
 }
