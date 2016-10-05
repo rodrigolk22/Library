@@ -8,7 +8,6 @@ package Biblioteca;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.*;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +21,6 @@ public class Cliente {
      * @param args the command line arguments
      * 
      */
-    public List consulta = null;
     public static void main(String[] args) {
         InterfaceServ interfaceServ = null;
         try {
