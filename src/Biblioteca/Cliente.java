@@ -5,11 +5,10 @@
  */
 package Biblioteca;
 
+import Biblioteca.Interfaces.InterfaceServ;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,18 +21,22 @@ public class Cliente {
      * 
      */
     public static void main(String[] args) {
-        InterfaceServ interfaceServ = null;
+        
+        InterfaceServ interfaceServ;
+        
         try {
+            // encontra a referencia da interface do servidor em seu serviço de nomes
             Registry referenciaServicoNomes = LocateRegistry.getRegistry(9000);
-            
             interfaceServ = (InterfaceServ) referenciaServicoNomes.lookup("Servidor_Biblioteca");
             
-            CliImpl cliImpl = new CliImpl(interfaceServ);
+            // instancia a implementação do cliente para enviar a sua referencia em chamadas remotas ao servidor
+            CliImpl cliImpl = new CliImpl();
             
-            cliImpl.consultarLivro(1);
+            // inicia a GUI
+            // TODO: iniciar a GUI
             
         } catch (RemoteException | NotBoundException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
     

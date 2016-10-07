@@ -5,13 +5,9 @@
  */
 package Biblioteca;
 
-import java.rmi.RemoteException;
-import java.rmi.registry.*;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.List;
+import Biblioteca.Interfaces.InterfaceCli;
+import java.rmi.RemoteException;
 
 /**
  *
@@ -19,21 +15,14 @@ import java.util.List;
  */
 public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     
-    InterfaceServ interfaceServ;
-    public List consulta = null;
-
-    public CliImpl(InterfaceServ interfaceServ) throws RemoteException {
-        this.interfaceServ = interfaceServ;
-    }
+    public CliImpl () throws RemoteException {}
     
-    public List consultarLivro(int id) throws RemoteException
-    {
-        
-        consulta = interfaceServ.consultarLivro(1, this);
-        System.out.println(consulta);
-        return consulta;
-    }
-    
+    /**
+     * Interface para exibir o aviso de um livro disponível
+     * @param livroId
+     * @throws RemoteException 
+     */
+    @Override
     public void exibir(int livroId) throws RemoteException {
         System.out.println(livroId);
     }

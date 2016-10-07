@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Biblioteca;
+package Biblioteca.Entidades;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @author Rodrigo e Jordan
  */
 
-public class Livro implements Serializable { 
+public class Livro implements Serializable {
     
     private int id;
     
