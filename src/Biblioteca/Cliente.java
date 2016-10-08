@@ -32,6 +32,8 @@ public class Cliente {
             
             cliImpl.consultarLivro(1);
             
+            //cliImpl.consultarTodosLivros();
+            
         } catch (RemoteException | NotBoundException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }

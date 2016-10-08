@@ -20,22 +20,33 @@ import java.util.List;
 public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     
     InterfaceServ interfaceServ;
-    public List consulta = null;
+    public Livro consulta = null;
+    public List consultaLista = null;
+    public List mensagens = null;
 
     public CliImpl(InterfaceServ interfaceServ) throws RemoteException {
         this.interfaceServ = interfaceServ;
     }
     
-    public List consultarLivro(int id) throws RemoteException
+    public List consultarTodosLivros() throws RemoteException
     {
         
-        consulta = interfaceServ.consultarLivro(1, this);
+        consultaLista = interfaceServ.consultarTodosLivros();
+        System.out.println(consultaLista);
+        return consultaLista;
+    }
+    
+    public Livro consultarLivro(int id) throws RemoteException
+    {
+        
+        consulta = interfaceServ.consultarLivro(1);
         System.out.println(consulta);
         return consulta;
     }
     
-    public void exibir(int livroId) throws RemoteException {
-        System.out.println(livroId);
+    public void notificacao(String mensagem) throws RemoteException {
+        mensagens.add(mensagem);
+        System.out.println(mensagem);
     }
     
 }
