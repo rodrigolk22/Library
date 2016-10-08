@@ -17,11 +17,6 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     
     public CliImpl () throws RemoteException {}
     
-    /**
-     * Interface para exibir o aviso de um livro disponível
-     * @param livroId
-     * @throws RemoteException 
-     */
     @Override
     public void exibir(int livroId) throws RemoteException {
         System.out.println(livroId);

@@ -14,10 +14,52 @@ import java.util.List;
  * @author Rodrigo e Jordan
  */
 public interface InterfaceServ extends Remote {
+    
+    /**
+     * Método remoto para listar os livros no acervo.
+     * @return
+     * @throws RemoteException 
+     */
     public List<Livro> consultarTodosLivros() throws RemoteException;
+    
+    /**
+     * Método remoto para consultar um livro no acervo por id.
+     * @param livroId
+     * @return
+     * @throws RemoteException 
+     */
     public Livro consultarLivro(int livroId) throws RemoteException;
+    
+    /**
+    * Método remoto para realizar o empréstimo de um livro do acervo.
+    * @param livroId
+    * @return
+    * @throws RemoteException 
+    */
     public String emprestarLivro(int livroId) throws RemoteException;
+    
+    /**
+     * Método remoto para renovar o empréstimo de um livro do acervo.
+     * @param livroId
+     * @return
+     * @throws RemoteException 
+     */
     public String renovarLivro(int livroId) throws RemoteException;
+    
+    /**
+     * Método remoto para devolver um livro emprestado ao acervo.
+     * @param livroId
+     * @return
+     * @throws RemoteException 
+     */
     public String devolverLivro(int livroId) throws RemoteException;
+    
+    /**
+     * Método remoto para reservar um livro que foi emprestado do acervo.
+     * @param livroId
+     * @param interfaceCli
+     * @return
+     * @throws RemoteException 
+     */
     public String reservarLivro(int livroId, InterfaceCli interfaceCli) throws RemoteException;
 }

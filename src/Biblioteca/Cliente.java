@@ -32,6 +32,10 @@ public class Cliente {
             // instancia a implementação do cliente para enviar a sua referencia em chamadas remotas ao servidor
             CliImpl cliImpl = new CliImpl();
             
+            // teste dos métodos remotos (TODO: remover depois)
+            System.out.println(interfaceServ.consultarTodosLivros());
+            System.out.println(interfaceServ.consultarLivro(2));
+            
             // inicia a GUI
             // TODO: iniciar a GUI
             

@@ -13,5 +13,12 @@ import java.rmi.RemoteException;
  * @author Rodrigo e Jordan
  */
 public interface InterfaceCli extends Remote {
+    
+    /**
+     * Método remoto para exibir o aviso de um livro disponível
+     * @param livroId
+     * @throws RemoteException 
+     */
     public void exibir(int livroId) throws RemoteException;
+    
 }
