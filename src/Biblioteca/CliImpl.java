@@ -22,6 +22,7 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     InterfaceServ interfaceServ;
     public Livro consulta = null;
     public List consultaLista = null;
+    public String mensagem = null;
     public List mensagens = null;
 
     public CliImpl(InterfaceServ interfaceServ) throws RemoteException {
@@ -43,7 +44,12 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
         System.out.println(consulta);
         return consulta;
     }
-    
+    public void emprestarLivro(int id, String nome) throws RemoteException{
+        mensagem = interfaceServ.emprestarLivro(id, nome);
+        System.out.println(mensagem);
+    }
+            
+            
     public void notificacao(String mensagem) throws RemoteException {
         mensagens.add(mensagem);
         System.out.println(mensagem);
