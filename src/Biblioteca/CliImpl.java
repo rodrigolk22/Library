@@ -16,10 +16,9 @@ import java.rmi.RemoteException;
 public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
     
     public CliImpl () throws RemoteException {}
-    
+
     @Override
     public void exibir(int livroId) throws RemoteException {
-        System.out.println(livroId);
+        // TODO
     }
-    
 }

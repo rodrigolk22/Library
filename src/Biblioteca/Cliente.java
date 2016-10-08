@@ -44,6 +44,12 @@ public class Cliente {
             // inicia a GUI
             // TODO: iniciar a GUI
             
+            cliImpl.consultarTodosLivros();
+            
+            cliImpl.emprestarLivro(1,"Jose");
+            
+            cliImpl.consultarTodosLivros();
+            
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex.getMessage());
         }
