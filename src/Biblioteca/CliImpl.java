@@ -10,7 +10,7 @@ import Biblioteca.Interfaces.InterfaceCli;
 import java.rmi.RemoteException;
 
 /**
- *
+ * Implementação dos métodos remotos do cliente.
  * @author Rodrigo e Jordan
  */
 public class CliImpl extends UnicastRemoteObject implements InterfaceCli {

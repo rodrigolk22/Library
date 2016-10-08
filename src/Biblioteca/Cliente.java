@@ -35,6 +35,7 @@ public class Cliente {
             // teste dos métodos remotos (TODO: remover depois)
             System.out.println(interfaceServ.consultarTodosLivros());
             System.out.println(interfaceServ.consultarLivro(2));
+            System.out.println(interfaceServ.emprestarLivro(2, "carlinhos99"));
             
             // inicia a GUI
             // TODO: iniciar a GUI
