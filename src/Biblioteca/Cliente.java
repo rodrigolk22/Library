@@ -32,23 +32,24 @@ public class Cliente {
             // instancia a implementação do cliente para enviar a sua referencia em chamadas remotas ao servidor
             CliImpl cliImpl = new CliImpl();
             
-            // teste dos métodos remotos (TODO: remover depois)
+            /** -----------------------------------------------------
+             * teste dos métodos remotos (TODO: remover depois)
+             ------------------------------------------------------*/            
+            
+            // consultar todos os livros
             System.out.println(interfaceServ.consultarTodosLivros());
+            
+            // consultar um livro
             System.out.println(interfaceServ.consultarLivro(2));
             
-            System.out.println(interfaceServ.emprestarLivro(2, "carlinhos99"));
+            // realizar empréstimo
             System.out.println(interfaceServ.emprestarLivro(1, "carlinhos99"));
-            System.out.println(interfaceServ.emprestarLivro(1, "carlinhos99"));
             System.out.println(interfaceServ.emprestarLivro(2, "carlinhos99"));
+            System.out.println(interfaceServ.emprestarLivro(3, "carlinhos99"));
+            System.out.println(interfaceServ.emprestarLivro(4, "carlinhos99"));
             
             // inicia a GUI
             // TODO: iniciar a GUI
-            
-            cliImpl.consultarTodosLivros();
-            
-            cliImpl.emprestarLivro(1,"Jose");
-            
-            cliImpl.consultarTodosLivros();
             
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex.getMessage());
