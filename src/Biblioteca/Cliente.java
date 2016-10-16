@@ -48,10 +48,10 @@ public class Cliente {
             System.out.println(interfaceServ.emprestarLivro(3, "carlinhos99"));
             System.out.println(interfaceServ.emprestarLivro(4, "carlinhos99"));
             
-            System.out.println(interfaceServ.reservarLivro(5, "carlinhos99", cliImpl));
+            System.out.println(interfaceServ.reservarLivro(5, "carlinhos99", cliImpl, 5));
             
             //Impede que seja feita duas reservas do mesmo livro
-            System.out.println(interfaceServ.reservarLivro(5, "carlinhos99", cliImpl));
+            System.out.println(interfaceServ.reservarLivro(5, "carlinhos99", cliImpl, 5));
             
             // inicia a GUI
             // TODO: iniciar a GUI

@@ -60,8 +60,9 @@ public interface InterfaceServ extends Remote {
      * @param livroId
      * @param clienteNome
      * @param interfaceCli
+     * @param tempoEspera
      * @return
      * @throws RemoteException 
      */
-    public String reservarLivro(int livroId, String clienteNome, InterfaceCli interfaceCli) throws RemoteException;
+    public String reservarLivro(int livroId, String clienteNome, InterfaceCli interfaceCli, int tempoEspera) throws RemoteException;
 }
