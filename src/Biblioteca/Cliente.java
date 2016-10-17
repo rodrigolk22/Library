@@ -43,15 +43,16 @@ public class Cliente {
             System.out.println(interfaceServ.consultarLivro(2));
             
             // realizar empréstimo
-            System.out.println(interfaceServ.emprestarLivro(1, "carlinhos99"));
-            System.out.println(interfaceServ.emprestarLivro(2, "carlinhos99"));
+            //System.out.println(interfaceServ.emprestarLivro(1, "carlinhos99"));
             System.out.println(interfaceServ.emprestarLivro(3, "carlinhos99"));
-            System.out.println(interfaceServ.emprestarLivro(4, "carlinhos99"));
+            System.out.println(interfaceServ.emprestarLivro(3, "carlinhos99"));
+            System.out.println(interfaceServ.emprestarLivro(5, "carlinhos99"));
+            // realizar reserva
+            System.out.println(interfaceServ.reservarLivro(5, "mustafa", cliImpl, 5));
+            // realizar devolução
+            System.out.println(interfaceServ.devolverLivro(5));
             
-            System.out.println(interfaceServ.reservarLivro(5, "carlinhos99", cliImpl, 5));
             
-            //Impede que seja feita duas reservas do mesmo livro
-            System.out.println(interfaceServ.reservarLivro(5, "carlinhos99", cliImpl, 5));
             
             // inicia a GUI
             // TODO: iniciar a GUI
