@@ -42,6 +42,7 @@ public interface InterfaceServ extends Remote {
     /**
      * Método remoto para renovar o empréstimo de um livro do acervo.
      * @param livroId
+     * @param clienteNome
      * @return
      * @throws RemoteException 
      */
