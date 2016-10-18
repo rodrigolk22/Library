@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -45,12 +46,12 @@ public class GUI extends javax.swing.JFrame {
         jBotaoDevolver = new javax.swing.JButton();
         jBotaoReservar = new javax.swing.JButton();
         jBotaoRenovar = new javax.swing.JButton();
-        jCampoNotificacao = new javax.swing.JLabel();
+        jLabelNotificacao = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jCampoUsuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jCampoSistema = new javax.swing.JLabel();
+        jLabelSistema = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -87,7 +88,7 @@ public class GUI extends javax.swing.JFrame {
 
         jBotaoRenovar.setText("Renovar");
 
-        jCampoNotificacao.setText("Nenhuma notificação no momento");
+        jLabelNotificacao.setText("Nenhuma notificação no momento");
 
         jLabel4.setText("Sistema:");
 
@@ -101,7 +102,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel6.setText("Notificação:");
 
-        jCampoSistema.setText("Aguardando interação do usuário");
+        jLabelSistema.setText("Aguardando interação do usuário");
 
         jTextField1.setText("1");
 
@@ -156,11 +157,11 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCampoSistema))
+                                        .addComponent(jLabelSistema))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCampoNotificacao))
+                                        .addComponent(jLabelNotificacao))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addGap(2, 2, 2)
@@ -201,7 +202,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jCampoNotificacao))
+                    .addComponent(jLabelNotificacao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBotaoConsulta)
@@ -221,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jCampoSistema))
+                    .addComponent(jLabelSistema))
                 .addContainerGap())
         );
 
@@ -286,8 +287,33 @@ public class GUI extends javax.swing.JFrame {
 
     private void jBotaoEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoEmprestarActionPerformed
         
+        // pega a linha selecioanda na tabela
+        int row = jTableResultados.getSelectedRow();
         
+        // pega o nome do cliente
+        String nomeCliente = this.jCampoUsuario.getText();
         
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+        } else if (nomeCliente.equals("")) {
+            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+        } else {
+                
+            // pega o ID do livro a ser emprestado
+            int livroId = Integer.parseInt(jTableResultados.getModel().getValueAt(row, 0).toString());    
+                
+            try {
+                // chama o método remoto para emprestar o livro
+                String resposta = Cliente.interfaceServ.emprestarLivro(livroId, nomeCliente);
+
+                // exibe a resposta do servidor
+                this.jLabelSistema.setText(resposta);
+                JOptionPane.showMessageDialog(null, resposta);
+
+            } catch (RemoteException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jBotaoEmprestarActionPerformed
 
     /**
@@ -301,9 +327,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jBotaoEmprestar;
     private javax.swing.JButton jBotaoRenovar;
     private javax.swing.JButton jBotaoReservar;
-    private javax.swing.JLabel jCampoNotificacao;
     private javax.swing.JTextField jCampoPesquisa;
-    private javax.swing.JLabel jCampoSistema;
     private javax.swing.JTextField jCampoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -311,6 +335,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelNotificacao;
+    private javax.swing.JLabel jLabelSistema;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableResultados;

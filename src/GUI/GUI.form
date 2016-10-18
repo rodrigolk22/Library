@@ -38,12 +38,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jCampoSistema" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelSistema" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCampoNotificacao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelNotificacao" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -97,7 +97,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCampoNotificacao" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelNotificacao" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -121,7 +121,7 @@
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCampoSistema" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelSistema" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -170,7 +170,7 @@
         <Property name="text" type="java.lang.String" value="Renovar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jCampoNotificacao">
+    <Component class="javax.swing.JLabel" name="jLabelNotificacao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nenhuma notifica&#xe7;&#xe3;o no momento"/>
       </Properties>
@@ -195,7 +195,7 @@
         <Property name="text" type="java.lang.String" value="Notifica&#xe7;&#xe3;o:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jCampoSistema">
+    <Component class="javax.swing.JLabel" name="jLabelSistema">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aguardando intera&#xe7;&#xe3;o do usu&#xe1;rio"/>
       </Properties>
