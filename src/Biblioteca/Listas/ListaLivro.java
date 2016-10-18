@@ -6,16 +6,17 @@
 package Biblioteca.Listas;
 
 import Biblioteca.Entidades.Livro;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author redproxy
- */
-public class ListaLivro {
+public class ListaLivro implements Serializable {
 
-    private List<Livro> listaLivro = new ArrayList();
+    private List<Livro> listaLivro;
+
+    public ListaLivro() {
+        listaLivro = new ArrayList();
+    }
 
     public List<Livro> getListaLivro() {
         return listaLivro;
@@ -85,8 +86,8 @@ public class ListaLivro {
      *
      * @return
      */
-    public List todos() {
-        return listaLivro;
+    public ListaLivro todos() {
+        return this;
     }
 
     /**
@@ -106,13 +107,13 @@ public class ListaLivro {
     }
 
     /**
-     * 
-     * @param Id
+     * Retorna um livro pelo seu id. Se o livro não existir, retorna nulo.
+     * @param livroId
      * @return 
      */
-    public Livro consultar(int Id) {
+    public Livro consultar(int livroId) {
         for (Livro l : listaLivro) {
-            if (l.getId() == Id) {
+            if (l.getId() == livroId) {
                 return l;
             }
         }

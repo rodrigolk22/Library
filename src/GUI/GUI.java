@@ -1,5 +1,13 @@
 package GUI;
 
+import Biblioteca.Cliente;
+import Biblioteca.Entidades.Livro;
+import Biblioteca.Listas.ListaLivro;
+import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,7 +38,7 @@ public class GUI extends javax.swing.JFrame {
 
         jCampoPesquisa = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jListaConsulta = new javax.swing.JList<>();
+        jListaConsulta = new javax.swing.JList<String>();
         jBotaoConsulta = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jBotaoEmprestar = new javax.swing.JButton();
@@ -49,10 +57,10 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jListaConsulta.setModel(new javax.swing.AbstractListModel<String>() {
+        jListaConsulta.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(jListaConsulta);
 
@@ -125,8 +133,8 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(2, 2, 2)
-                                .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBotaoConsulta)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -161,10 +169,11 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jCampoNotificacao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBotaoConsulta)
-                    .addComponent(jLabel7))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -185,8 +194,41 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Realiza a consulta pelo ID de um livro ou lista todos os 
+     * livros se não houver nenhum ID.
+     * @param evt 
+     */
     private void jBotaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoConsultaActionPerformed
-        // TODO add your handling code here:
+        
+        // pega o ID do livro a ser buscado
+        int livroId = -1;
+        if (!this.jCampoPesquisa.getText().equals("")) {
+            livroId = Integer.parseInt(this.jCampoPesquisa.getText());
+        }
+        
+        try {
+            // chama o método remoto para buscar os livros
+            ListaLivro listaLivro = new ListaLivro();
+            if (livroId >= 0) { 
+                Livro livro = Cliente.interfaceServ.consultarLivro(livroId);
+                if (livro != null) {
+                    listaLivro.adicionar(livro);
+                }
+            } else {
+                listaLivro = Cliente.interfaceServ.consultarTodosLivros();
+            }
+            
+            // prepara o model para popular a lista de livros na GUI
+            DefaultListModel listModel = new DefaultListModel();
+            for(Livro livro: listaLivro.getListaLivro()){
+                listModel.addElement(livro);
+            }
+            this.jListaConsulta.setModel(listModel);
+            
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBotaoConsultaActionPerformed
 
     private void jCampoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCampoUsuarioActionPerformed

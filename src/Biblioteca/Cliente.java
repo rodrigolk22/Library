@@ -17,13 +17,13 @@ import java.rmi.registry.*;
  */
 public class Cliente {
 
+    public static InterfaceServ interfaceServ;
+    
     /**
      * @param args the command line arguments
      * 
      */
     public static void main(String[] args) {
-        
-        InterfaceServ interfaceServ;
         
         try {
             // encontra a referencia da interface do servidor em seu serviço de nomes
