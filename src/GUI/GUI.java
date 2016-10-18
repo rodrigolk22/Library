@@ -78,6 +78,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jBotaoDevolver.setText("Devolver");
+        jBotaoDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotaoDevolverActionPerformed(evt);
+            }
+        });
 
         jBotaoReservar.setText("Reservar");
         jBotaoReservar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +92,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jBotaoRenovar.setText("Renovar");
+        jBotaoRenovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotaoRenovarActionPerformed(evt);
+            }
+        });
 
         jLabelNotificacao.setText("Nenhuma notificação no momento");
 
@@ -315,6 +325,68 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jBotaoEmprestarActionPerformed
+
+    private void jBotaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoDevolverActionPerformed
+        
+        // pega a linha selecioanda na tabela
+        int row = jTableResultados.getSelectedRow();
+        
+        // pega o nome do cliente
+        String nomeCliente = this.jCampoUsuario.getText();
+        
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+        } else if (nomeCliente.equals("")) {
+            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+        } else {
+                
+            // pega o ID do livro a ser devolvido
+            int livroId = Integer.parseInt(jTableResultados.getModel().getValueAt(row, 0).toString());    
+                
+            try {
+                // chama o método remoto para devolver o livro
+                String resposta = Cliente.interfaceServ.devolverLivro(livroId, nomeCliente);
+
+                // exibe a resposta do servidor
+                this.jLabelSistema.setText(resposta);
+                JOptionPane.showMessageDialog(null, resposta);
+
+            } catch (RemoteException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jBotaoDevolverActionPerformed
+
+    private void jBotaoRenovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoRenovarActionPerformed
+        
+        // pega a linha selecioanda na tabela
+        int row = jTableResultados.getSelectedRow();
+        
+        // pega o nome do cliente
+        String nomeCliente = this.jCampoUsuario.getText();
+        
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+        } else if (nomeCliente.equals("")) {
+            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+        } else {
+                
+            // pega o ID do livro a ser renovado
+            int livroId = Integer.parseInt(jTableResultados.getModel().getValueAt(row, 0).toString());    
+                
+            try {
+                // chama o método remoto para renovar o livro
+                String resposta = Cliente.interfaceServ.renovarLivro(livroId, nomeCliente);
+
+                // exibe a resposta do servidor
+                this.jLabelSistema.setText(resposta);
+                JOptionPane.showMessageDialog(null, resposta);
+
+            } catch (RemoteException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jBotaoRenovarActionPerformed
 
     /**
      * @param args the command line arguments

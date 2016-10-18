@@ -156,6 +156,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Devolver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotaoDevolverActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBotaoReservar">
       <Properties>
@@ -169,6 +172,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Renovar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotaoRenovarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNotificacao">
       <Properties>
