@@ -2,6 +2,7 @@ package GUI;
 
 import Biblioteca.Cliente;
 import Biblioteca.Entidades.Livro;
+import Biblioteca.Interfaces.InterfaceCli;
 import Biblioteca.Listas.ListaLivro;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -52,7 +53,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelSistema = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jDiasMaxEsperaReserva = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -114,7 +115,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelSistema.setText("Aguardando interação do usuário");
 
-        jTextField1.setText("1");
+        jDiasMaxEsperaReserva.setText("1");
 
         jLabel1.setText("Reserva (dias):");
 
@@ -188,7 +189,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jDiasMaxEsperaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBotaoReservar))))
                     .addGroup(layout.createSequentialGroup()
@@ -226,7 +227,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jBotaoEmprestar)
                     .addComponent(jBotaoRenovar)
                     .addComponent(jBotaoDevolver)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDiasMaxEsperaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jBotaoReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -292,7 +293,39 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jCampoUsuarioActionPerformed
 
     private void jBotaoReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoReservarActionPerformed
-        // TODO add your handling code here:
+        
+        // pega a linha selecioanda na tabela
+        int row = jTableResultados.getSelectedRow();
+        
+        // pega o nome do cliente
+        String nomeCliente = this.jCampoUsuario.getText();
+        
+        // dias máximos para receber notificação de reserva
+        int diasMaxEsperaReserva = Integer.parseInt(this.jDiasMaxEsperaReserva.getText());
+                
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+        } else if (nomeCliente.equals("")) {
+            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+        } else if (diasMaxEsperaReserva <= 0) { 
+            JOptionPane.showMessageDialog(null, "A quantidade máxima de dias que irá aguardar pela reserva deve ser maior que 0!");
+        } else {
+                
+            // pega o ID do livro a ser reservado
+            int livroId = Integer.parseInt(jTableResultados.getModel().getValueAt(row, 0).toString());    
+                
+            try {
+                // chama o método remoto para reservar o livro (passa a referência do cliente como parâmetro)
+                String resposta = Cliente.interfaceServ.reservarLivro(livroId, nomeCliente, Cliente.cliImpl, livroId);
+
+                // exibe a resposta do servidor
+                this.jLabelSistema.setText(resposta);
+                JOptionPane.showMessageDialog(null, resposta);
+
+            } catch (RemoteException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jBotaoReservarActionPerformed
 
     private void jBotaoEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoEmprestarActionPerformed
@@ -401,6 +434,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jBotaoReservar;
     private javax.swing.JTextField jCampoPesquisa;
     private javax.swing.JTextField jCampoUsuario;
+    private javax.swing.JTextField jDiasMaxEsperaReserva;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -412,6 +446,5 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableResultados;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

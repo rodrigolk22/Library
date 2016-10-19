@@ -19,6 +19,8 @@ public class Cliente {
 
     public static InterfaceServ interfaceServ;
     
+    public static CliImpl cliImpl;
+    
     /**
      * @param args the command line arguments
      * 
@@ -31,7 +33,7 @@ public class Cliente {
             interfaceServ = (InterfaceServ) referenciaServicoNomes.lookup("Servidor_Biblioteca");
             
             // instancia a implementação do cliente para enviar a sua referencia em chamadas remotas ao servidor
-            CliImpl cliImpl = new CliImpl();
+            cliImpl = new CliImpl();
             
             /** -----------------------------------------------------
              * teste dos métodos remotos (TODO: remover depois)
