@@ -235,7 +235,7 @@ public class GUI extends javax.swing.JFrame {
             // limpa a tabela antes de adicionar os resultados
             tableModel.setRowCount(0); 
             
-            // prepara o model para popular a tabela de resultados na GUI
+            // prepara o modelo para popular a tabela de resultados na GUI
             for(Livro livro: listaLivro.getListaLivro()){
                 tableModel.addRow(new Object[]{
                     livro.getId(), 
@@ -252,13 +252,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jBotaoConsultaActionPerformed
 
     private void jCampoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCampoUsuarioActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jCampoUsuarioActionPerformed
 
     private void jBotaoReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoReservarActionPerformed
         
-        // pega a linha selecioanda na tabela
+        // pega a linha selecionada na tabela
         int row = jTableResultados.getSelectedRow();
         
         // pega o nome do cliente
@@ -268,11 +267,11 @@ public class GUI extends javax.swing.JFrame {
         int diasMaxEsperaReserva = Integer.parseInt(this.jDiasMaxEsperaReserva.getText());
                 
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+            JOptionPane.showMessageDialog(null, "Selecione o livro na tabela");
         } else if (nomeCliente.equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+            JOptionPane.showMessageDialog(null, "Insira um nome de usuário");
         } else if (diasMaxEsperaReserva <= 0) { 
-            JOptionPane.showMessageDialog(null, "A quantidade máxima de dias que irá aguardar pela reserva deve ser maior que 0!");
+            JOptionPane.showMessageDialog(null, "A quantidade de dias deve ser maior que 0");
         } else {
                 
             // pega o ID do livro a ser reservado
@@ -300,9 +299,9 @@ public class GUI extends javax.swing.JFrame {
         String nomeCliente = this.jCampoUsuario.getText();
         
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+            JOptionPane.showMessageDialog(null, "Selecione o livro na tabela");
         } else if (nomeCliente.equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+            JOptionPane.showMessageDialog(null, "Insira um nome de usuário");
         } else {
                 
             // pega o ID do livro a ser emprestado
@@ -323,16 +322,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void jBotaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoDevolverActionPerformed
         
-        // pega a linha selecioanda na tabela
+        // pega a linha selecionada na tabela
         int row = jTableResultados.getSelectedRow();
         
         // pega o nome do cliente
         String nomeCliente = this.jCampoUsuario.getText();
         
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+            JOptionPane.showMessageDialog(null, "Selecione o livro na tabela");
         } else if (nomeCliente.equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+            JOptionPane.showMessageDialog(null, "Insira um nome de usuário");
         } else {
                 
             // pega o ID do livro a ser devolvido
@@ -353,16 +352,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void jBotaoRenovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotaoRenovarActionPerformed
         
-        // pega a linha selecioanda na tabela
+        // pega a linha selecionada na tabela
         int row = jTableResultados.getSelectedRow();
         
         // pega o nome do cliente
         String nomeCliente = this.jCampoUsuario.getText();
         
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione um livro primeiro!");
+            JOptionPane.showMessageDialog(null, "Selecione o livro na tabela");
         } else if (nomeCliente.equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira o seu nome de usuário, por favor...");
+            JOptionPane.showMessageDialog(null, "Insira um nome de usuário");
         } else {
                 
             // pega o ID do livro a ser renovado
