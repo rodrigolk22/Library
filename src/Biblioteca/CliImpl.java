@@ -8,6 +8,7 @@ package Biblioteca;
 import java.rmi.server.UnicastRemoteObject;
 import Biblioteca.Interfaces.InterfaceCli;
 import java.rmi.RemoteException;
+import javax.swing.JOptionPane;
 
 /**
  * Implementação dos métodos remotos do cliente.
@@ -19,6 +20,6 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli {
 
     @Override
     public void notificar(String mensagem) throws RemoteException {
-        System.out.println(mensagem);
+        Cliente.gui.setJLabelNotificacao(mensagem);
     }
 }

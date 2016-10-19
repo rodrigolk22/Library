@@ -2,13 +2,10 @@ package GUI;
 
 import Biblioteca.Cliente;
 import Biblioteca.Entidades.Livro;
-import Biblioteca.Interfaces.InterfaceCli;
 import Biblioteca.Listas.ListaLivro;
 import java.rmi.RemoteException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +26,15 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+    }
+    
+    /**
+     * Exibe uma notificação enviada pelo servidor
+     * @param mensagem 
+     */
+    public void setJLabelNotificacao(String mensagem)
+    {
+        this.jLabelNotificacao.setText(mensagem);
     }
 
     /**
