@@ -9,12 +9,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author redproxy
@@ -28,11 +22,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    /**
-     * Exibe uma notificação enviada pelo servidor
-     * @param mensagem 
-     */
-    public void setJLabelNotificacao(String mensagem)
+    public void mostrarNotificacao(String mensagem)
     {
         this.jLabelNotificacao.setText(mensagem);
     }
@@ -48,23 +38,19 @@ public class GUI extends javax.swing.JFrame {
 
         jCampoPesquisa = new javax.swing.JTextField();
         jBotaoConsulta = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jBotaoEmprestar = new javax.swing.JButton();
         jBotaoDevolver = new javax.swing.JButton();
         jBotaoReservar = new javax.swing.JButton();
         jBotaoRenovar = new javax.swing.JButton();
-        jLabelNotificacao = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jCampoUsuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabelSistema = new javax.swing.JLabel();
         jDiasMaxEsperaReserva = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableResultados = new javax.swing.JTable();
+        jLabelNotificacao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,8 +60,6 @@ public class GUI extends javax.swing.JFrame {
                 jBotaoConsultaActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("BiliotecaJavaRmi");
 
         jBotaoEmprestar.setText("Emprestar");
         jBotaoEmprestar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,10 +89,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabelNotificacao.setText("Nenhuma notificação no momento");
-
-        jLabel4.setText("Sistema:");
-
         jCampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCampoUsuarioActionPerformed(evt);
@@ -117,15 +97,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel5.setText("Usuário:");
 
-        jLabel6.setText("Notificação:");
-
-        jLabelSistema.setText("Aguardando interação do usuário");
-
         jDiasMaxEsperaReserva.setText("1");
 
         jLabel1.setText("Reserva (dias):");
 
-        jLabel7.setText("Digite o Id do livro:");
+        jLabel7.setText("Id do livro:");
 
         jTableResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,77 +132,60 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
         );
 
+        jLabelNotificacao.setForeground(new java.awt.Color(255, 3, 0));
+        jLabelNotificacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNotificacao.setText("nenhuma notificação");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jBotaoEmprestar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jBotaoRenovar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBotaoDevolver)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDiasMaxEsperaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBotaoReservar))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNotificacao)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelSistema))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelNotificacao))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jBotaoConsulta)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBotaoEmprestar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addComponent(jBotaoRenovar)
+                                .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBotaoDevolver)
+                                .addComponent(jCampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel1)
+                                .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDiasMaxEsperaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBotaoReservar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jBotaoConsulta)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelNotificacao)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
                     .addComponent(jCampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabelNotificacao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBotaoConsulta)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
                         .addComponent(jCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBotaoConsulta)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,10 +195,6 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jDiasMaxEsperaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jBotaoReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabelSistema))
                 .addContainerGap())
         );
 
@@ -325,7 +280,6 @@ public class GUI extends javax.swing.JFrame {
                 String resposta = Cliente.interfaceServ.reservarLivro(livroId, nomeCliente, Cliente.cliImpl, livroId);
 
                 // exibe a resposta do servidor
-                this.jLabelSistema.setText(resposta);
                 JOptionPane.showMessageDialog(null, resposta);
 
             } catch (RemoteException ex) {
@@ -356,7 +310,6 @@ public class GUI extends javax.swing.JFrame {
                 String resposta = Cliente.interfaceServ.emprestarLivro(livroId, nomeCliente);
 
                 // exibe a resposta do servidor
-                this.jLabelSistema.setText(resposta);
                 JOptionPane.showMessageDialog(null, resposta);
 
             } catch (RemoteException ex) {
@@ -387,7 +340,6 @@ public class GUI extends javax.swing.JFrame {
                 String resposta = Cliente.interfaceServ.devolverLivro(livroId, nomeCliente);
 
                 // exibe a resposta do servidor
-                this.jLabelSistema.setText(resposta);
                 JOptionPane.showMessageDialog(null, resposta);
 
             } catch (RemoteException ex) {
@@ -418,7 +370,6 @@ public class GUI extends javax.swing.JFrame {
                 String resposta = Cliente.interfaceServ.renovarLivro(livroId, nomeCliente);
 
                 // exibe a resposta do servidor
-                this.jLabelSistema.setText(resposta);
                 JOptionPane.showMessageDialog(null, resposta);
 
             } catch (RemoteException ex) {
@@ -442,13 +393,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jCampoUsuario;
     private javax.swing.JTextField jDiasMaxEsperaReserva;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelNotificacao;
-    private javax.swing.JLabel jLabelSistema;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableResultados;
